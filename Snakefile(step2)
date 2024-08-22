@@ -1,0 +1,10 @@
+FILENAMES = ['A', 'B', 'C']
+
+rule concat:
+    """개별 단어 수 파일을 병합."""
+    input:
+        expand("temp/wc_{filename}.txt", filename=FILENAMES)
+    output:
+        "temp/wc_all.csv"
+    script:
+        "concat.py"

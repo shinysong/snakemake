@@ -1,0 +1,8 @@
+rule count:
+    """파일내 단어 수 세기."""
+    input:
+        "data/{filename}.txt"
+    output:
+        "temp/wc_{filename}.txt"
+    shell:
+        "powershell -Command \"(Get-Content '{input}' | Measure-Object -Word).Words\" > {output}"
